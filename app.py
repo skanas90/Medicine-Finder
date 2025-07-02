@@ -9,7 +9,7 @@ app = Flask(__name__)
 app.secret_key = 'your_secret_key'
 
 # Configure the database URI
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:9260786921@localhost/medicine_finder'
+app.config['SQLALCHEMY_DATABASE_URI']  = os.environ.get ('postgresql://postgres:9260786921@localhost/medicine_finder')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
