@@ -1,0 +1,38 @@
+{% extends "admin_dashboard.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Manage Users</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>User ID</th>
+                <th>Username</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.username }}</td>
+                    <td>
+                        <span class="badge {% if user.is_blocked %}badge-danger{% else %}badge-success{% endif %}">
+                            {{ 'Blocked' if user.is_blocked else 'Active' }}
+                        </span>
+                    </td>
+                    <td>
+                        {% if not user.is_blocked %}
+                            <a href="{{ url_for('block_user', user_id=user.id) }}" class="btn btn-warning btn-sm">Block</a>
+                        {% else %}
+                            <a href="{{ url_for('unblock_user', user_id=user.id) }}" class="btn btn-success btn-sm">Unblock</a>
+                        {% endif %}
+                        <a href="{{ url_for('delete_user', user_id=user.id) }}" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

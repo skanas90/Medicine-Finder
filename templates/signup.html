@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicine Finder - Signup</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        /* Header Styles */
+        .header {
+            margin-bottom: 2.5rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;  /* Ensures logo and text are aligned vertically */
+            justify-content: center; /* Ensures they are centered horizontally */
+            gap: 10px; /* Adds space between logo and text */
+        }
+        
+        .logo-img {
+            width: 40px; /* Adjust logo size */
+            height: auto;
+        }
+        
+        .logo-text {
+            font-size: 2.5rem; /* Adjust size for "Medicine Finder" text */
+            font-weight: bold;
+            color: #34d399; /* Theme color */
+            margin-top: 0; /* Reset margin-top */
+        }
+        
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        body {
+            min-height: 100vh;
+            display: flex;
+            background-image: url(''); /* Add background image URL */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            overflow-x: hidden;
+        }
+        
+        /* Layout Styles */
+        .login-container {
+            display: flex;
+            width: 100%;
+            position: relative;
+        }
+        
+        .login-form {
+            width: 50%;
+            padding: 3rem;
+            background: #EAF8EE;
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transition: opacity 0.5s ease-out;
+        }
+        
+        .welcome-side {
+            width: 50%;
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            position: relative;
+            transition: all 0.8s cubic-bezier(0.86, 0, 0.07, 1);
+            z-index: 1;
+            background: #34d399;
+            backdrop-filter: blur(10px);
+        }
+        
+        .welcome-side.expanded {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: #34d399;
+        }
+        
+        .welcome-message {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease-out;
+            position: absolute;
+            display: none;
+        }
+        
+        .welcome-message.show {
+            opacity: 1;
+            transform: translateY(0);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        .welcome-message h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        
+        .welcome-message p {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .welcome-img {
+            width: 64px;  /* Same size as the previous icon */
+            height: auto;
+        }
+        
+        /* Input Fields and Buttons */
+        .social-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .social-btn {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid #e5e7eb;
+            background: white;
+            color: #6b7280;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .social-btn:hover {
+            border-color: #2563eb;
+            color: #2563eb;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: #374151;
+            text-transform: uppercase;
+            font-size: 0.875rem;
+        }
+        
+        input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            transition: all 0.2s;
+            background: white;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+        }
+        
+        .form-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .remember-me input[type="checkbox"] {
+            width: auto;
+        }
+        
+        .forgot-password {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        
+        .forgot-password:hover {
+            color: #1d4ed8;
+        }
+        
+        .sign-in-button {
+            width: 100%;
+            padding: 0.75rem;
+            background: #34d399;
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .sign-in-button:hover {
+            background: #10B981;
+        }
+        
+        /* Welcome Side Text */
+        .welcome-side h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            transition: opacity 0.3s ease-out;
+        }
+        
+        .welcome-side p {
+            font-size: 1.125rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            transition: opacity 0.3s ease-out;
+        }
+        
+        .welcome-side.expanded h2,
+        .welcome-side.expanded p,
+        .welcome-side.expanded .sign-up-button {
+            opacity: 0;
+        }
+        
+        /* Sign-Up Button */
+        .sign-up-button {
+            padding: 0.75rem 2rem;
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+        
+        .sign-up-button:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        /* Media Queries for Mobile */
+        @media (max-width: 768px) {
+            .login-container {
+                flex-direction: column;
+            }
+        
+            .login-form, .welcome-side {
+                width: 100%;
+                padding: 2rem;
+            }
+        
+            .welcome-side {
+                order: -1;
+                padding: 4rem 2rem;
+            }
+        
+            .welcome-side h2 {
+                font-size: 2rem;
+            }
+        
+            .welcome-message h1 {
+                font-size: 2.5rem;
+            }
+        
+            .welcome-message p {
+                font-size: 1.25rem;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-form">
+            <div class="header">
+                <div class="logo">
+                    <img src="../static/medical-history.png" alt="Medicine Finder Logo" class="logo-img">
+                    <span class="logo-text">Medicine Finder</span>
+                </div>
+                
+            </div>
+
+            <h1>Sign In</h1>
+
+            <form id="loginForm" action="/signup" method="POST" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" placeholder="Enter your username" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+
+                <div class="form-footer">
+                    <label class="remember-me">
+                        <input type="checkbox" name="remember">
+                        Remember Me
+                    </label>
+                    <a href="/forgot-password" class="forgot-password">Forgot Password</a>
+                </div>
+
+                <button type="submit" class="sign-in-button">Sign In</button>
+                <div class="social-buttons">
+                    <a href="https://www.facebook.com/" target="_blank" class="social-btn">
+                        <i data-lucide="facebook" class="social-icon"></i>
+                    </a>
+                    <a href="mailto:example@example.com" class="social-btn">
+                        <i data-lucide="mail" class="social-icon"></i>
+                    </a>
+                    <a href="https://twitter.com/" target="_blank" class="social-btn">
+                        <i data-lucide="twitter" class="social-icon"></i>
+                    </a>
+                    <a href="https://github.com/" target="_blank" class="social-btn">
+                        <i data-lucide="github" class="social-icon"></i>
+                    </a>
+                </div>
+                
+            </form>
+        </div>
+
+        <div class="welcome-side">
+            <h2>Join Medicine Finder </h2>
+            <p>Please Register to continue using Medicine Finder and manage your prescriptions, healthcare, and more.</p>
+            <a href="/signup" class="sign-up-button">Register</a>
+            
+            <div class="welcome-message">
+                <h1>Welcome to Medicine Finder</h1>
+                <p>Your trusted healthcare companion</p>
+                <img src="../static/medical-history.png" alt="Medicine Finder Logo" class="welcome-img">
+            </div>
+            
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            const loginForm = document.querySelector('.login-form');
+            const welcomeSide = document.querySelector('.welcome-side');
+            const welcomeMessage = document.querySelector('.welcome-message');
+
+            // Expand welcome side
+            welcomeSide.classList.add('expanded');
+            loginForm.classList.add('fade-out');
+
+            // Show welcome message after expansion
+            setTimeout(() => {
+                welcomeMessage.style.display = 'flex';
+                setTimeout(() => {
+                    welcomeMessage.classList.add('show');
+                }, 100);
+            }, 500);
+
+// Redirect to index page after animation
+setTimeout(() => {
+    window.location.href = "{{ url_for('index') }}";
+}, 2000);
+
+
+            // Submit the form after animation
+            setTimeout(() => {
+                const formData = new FormData(event.target);
+                fetch('/signup', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => {
+                    if (response.ok) {
+                        window.location.href = '/dashboard';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            }, 2000);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicine Finder</title>
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../static/styles.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+
+</head>
+<body>
+
+
+    <!-- Updated Header Section -->
+    <header>
+        <h1>
+            <img src="../static/medical-history.png" alt="logo" style="width: 40px;">
+            Medicine Finder
+        </h1>
+
+        <!-- Navigation and Sign In Button -->
+        <div class="nav-right">
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('index') }}">Home</a></li>
+                    <li><a href="{{ url_for('about') }}">About</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact-section">Contact</a></li>
+                </ul>
+            </nav>
+            <a href="/signup" class="sign-in">Sign In</a>
+        </div>
+    </header>
+
+          <!--Hero component-->
+          <div class="hero-header78">
+            <div class="hero-column thq-section-padding thq-section-max-width">
+              
+                <h1 class="hero-text1 thq-heading-1">
+                  <span>Find Your Medicine Easily</span>
+                </h1>
+                <p class="hero-text2 thq-body-large">
+                  <span>
+                    Search for your prescribed medicine and locate where it is
+                    available near you with just a few clicks.
+                  </span>
+                </p>
+              </div>
+
+    <!-- Main Content (Medicine Finder Form) -->
+    <div class="thq-section-padding">
+      <div class="thq-section-max-width">
+        <div class="cta-accent2-bg">
+          <div class="cta-accent1-bg">
+            <div class="cta-container2">
+              <div class="cta-content">
+                <span class="thq-heading-2">
+                  <span>Find Your Medicine</span>
+                </span>
+                <p class="thq-body-large">
+                  <span>
+                    Search for your prescribed medicine and locate where it is available near you.
+                  </span>
+                </p> 
+              </div>
+    
+              <!-- Aligning the form with the applied button styling -->
+              <div class="cta-actions" style="display: flex; align-items: center; gap: 20px;">
+                <!-- Updating the Search Form from the old code -->
+                <form action="/search" method="POST" id="medicine-form" style="display: flex; gap: 10px;">
+                  <input type="text" class="form-control" placeholder="Enter medicine name" name="medicine" required>
+                  <input type="hidden" id="latitude" name="latitude">
+                  <input type="hidden" id="longitude" name="longitude">
+    
+                  <!-- Updated "Search Medicines" button with the same styles as the old button -->
+                  <button type="submit" class="thq-button-filled cta-button">
+                    <span>Search Medicines</span>
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+
+    <!-- Blog Section -->
+    <section class="blog-section">
+        <div class="blog-card">
+            <h3>A Guide to Common Over-the-Counter Medicines</h3>
+            <p>Learn about commonly used over-the-counter medicines and when to consult a doctor. Discover uses, dosages, and safety tips for Paracetamol, Ibuprofen, and more.</p>
+            <a href="#">Read More</a>
+        </div>
+        <div class="blog-card">
+            <h3>Best Practices for Storing Medicines at Home</h3>
+            <p>Find out how to safely store your medicines at home to keep them effective and prevent accidents. Learn tips for storage and safe disposal of expired medicines.</p>
+            <a href="#">Read More</a>
+        </div>
+        <div class="blog-card">
+            <h3>Why Consulting Your Pharmacist Is Important</h3>
+            <p>Your pharmacist can do more than just fill prescriptions! Learn why it's essential to consult them for advice on medications, dosage, side effects, and interactions.</p>
+            <a href="#">Read More</a>
+        </div>
+    </section>
+
+
+<!--Steps component-->
+<steps-wrapper class="steps-wrapper">
+    <div class="steps-container1 thq-section-padding">
+        <div class="steps-max-width thq-section-max-width">
+          <div class="steps-container2 thq-grid-2">
+            <div class="steps-section-header">
+              <h2 class="thq-heading-2">
+                Find Medicines Fast, Anytime, Anywhere
+              </h2>
+              <p class="thq-body-large">
+               
+              </p>
+              <div class="steps-actions">
+               
+              </div>
+            </div>
+            <div class="steps-container3">
+              <div class="steps-container4 thq-card">
+                <h2 class="thq-heading-2">
+                  <span>Search for Medicine</span>
+                </h2>
+                <span class="steps-text14 thq-body-small">
+                  <span>
+                    Enter the name of the medicine you are looking for in
+                    the search tab.
+                  </span>
+                </span>
+                <label class="steps-text15 thq-heading-3">01</label>
+              </div>
+              <div class="steps-container5 thq-card">
+                <h2 class="thq-heading-2"><span>View Results</span></h2>
+                <span class="steps-text17 thq-body-small">
+                  <span>
+                    See a list of pharmacies where the medicine is available
+                    and where it is not.
+                  </span>
+                </span>
+                <label class="steps-text18 thq-heading-3">02</label>
+              </div>
+              <div class="steps-container6 thq-card">
+                <h2 class="thq-heading-2"><span>Select Pharmacy</span></h2>
+                <span class="steps-text20 thq-body-small">
+                  <span>
+                    Choose a pharmacy where the medicine is available for
+                    purchase.
+                  </span>
+                </span>
+                <label class="steps-text21 thq-heading-3">03</label>
+              </div>
+              <div class="steps-container7 thq-card">
+                <h2 class="thq-heading-2">
+                  <span>Complete Purchase</span>
+                </h2>
+                <span class="steps-text23 thq-body-small">
+                  <span>
+                    Visit the selected pharmacy to purchase the medicine.
+                  </span>
+                </span>
+                <label class="steps-text24 thq-heading-3">04</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </steps-wrapper>
+
+
+  <!--Testimonial component-->
+  <div id="testimonials" class="thq-section-padding">
+  <div class="thq-section-padding">
+    <div class="testimonial-max-width thq-section-max-width">
+      <div class="testimonial-container10">
+        <h2 class="thq-heading-2"><span>Testimonials</span></h2>
+        <span class="testimonial-text11 thq-body-small">
+          <span>
+            Read what our customers have to say about their experience
+            with our Medicine Finder.
+          </span>
+        </span>
+      </div>
+      <div class="thq-grid-2">
+        <div class="thq-animated-card-bg-2">
+          <div class="thq-animated-card-bg-1">
+            <div
+              data-animated="true"
+              class="thq-card testimonial-card1"
+            >
+              <div class="testimonial-container12">
+                <img
+                  alt="Image of John Doe"
+                  src="https://images.unsplash.com/photo-1548783352-782f2ad6bedc?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTczODg1NjczOXw&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=1080"
+                  class="testimonial-image1"
+                />
+                <div class="testimonial-container13">
+                  <strong class="thq-body-large">
+                    <span>John Sir</span>
+                  </strong>
+                  <span class="thq-body-small">
+                    <span>Manager, Wellness Forever</span>
+                  </span>
+                </div>
+              </div>
+              <span class="testimonial-text14 thq-body-small">
+                <span>
+                  Using this medicine finder has made it so much easier
+                  for our customers to locate the medicines they need.
+                  Highly recommended!
+                </span>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="thq-animated-card-bg-2">
+          <div class="thq-animated-card-bg-1">
+            <div
+              data-animated="true"
+              class="thq-card testimonial-card2"
+            >
+              <div class="testimonial-container14">
+                <img
+                  alt="Image of Jane Smith"
+                  src="https://images.unsplash.com/photo-1594616838951-c155f8d978a0?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTczODg1NjczOXw&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=1080"
+                  class="testimonial-image2"
+                />
+                <div class="testimonial-container15">
+                  <strong class="thq-body-large">
+                    <span>Peter Fernandes</span>
+                  </strong>
+                  <span class="thq-body-small">
+                    <span>Pharmacist, Prime Medical Store</span>
+                  </span>
+                </div>
+              </div>
+              <span class="testimonial-text17 thq-body-small">
+                <span>
+                  I have been using this platform for a while now, and
+                  it has never failed to provide accurate information on
+                  medicine availability.
+                </span>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="thq-animated-card-bg-2">
+          <div class="thq-animated-card-bg-1">
+            <div
+              data-animated="true"
+              class="thq-card testimonial-card3"
+            >
+              <div class="testimonial-container16">
+                <img
+                  alt="Image of David Johnson"
+                  src="https://images.unsplash.com/photo-1583284791098-29f95de7190b?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTczODg1NjczOXw&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=1080"
+                  class="testimonial-image3"
+                />
+                <div class="testimonial-container17">
+                  <strong class="thq-body-large">
+                    <span>David Johnson</span>
+                  </strong>
+                  <span class="thq-body-small">
+                    <span>Patient</span>
+                  </span>
+                </div>
+              </div>
+              <span class="testimonial-text20 thq-body-small">
+                <span>
+                  As a patient, I rely on this website to quickly find
+                  out where I can purchase my prescribed medicines. It's
+                  a lifesaver!
+                </span>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="thq-animated-card-bg-2">
+          <div class="thq-animated-card-bg-1">
+            <div
+              data-animated="true"
+              class="thq-card testimonial-card4"
+            >
+              <div class="testimonial-container18">
+                <img
+                  alt="Image of Sarah Lee"
+                  src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTczODg1NjczOXw&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=1080"
+                  class="testimonial-image4"
+                />
+                <div class="testimonial-container19">
+                  <strong class="thq-body-large">
+                    <span>Sarah Shaikh</span>
+                  </strong>
+                  <span class="thq-body-small">
+                    <span>Medical Student</span>
+                  </span>
+                </div>
+              </div>
+              <span class="testimonial-text23 thq-body-small">
+                <span>
+                    This tool has been invaluable during my studies. It helps me understand the availability of different medicines in various locations.
+                </span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</testimonial-wrapper>
+
+
+
+
+
+
+
+    <!--Contact component-->
+    <div id="contact-section" class="contact-contact20 thq-section-padding">
+  <div class="contact-max-width thq-section-max-width">
+    </div>
+  </div>
+    <div class="contact-contact20 thq-section-padding">
+        <div class="contact-max-width thq-section-max-width">
+          <div class="contact-section-title">
+            <span class="thq-body-small">
+              <span>Get in touch with us today!</span>
+            </span>
+            <div class="contact-content1">
+              <h2 class="thq-heading-2"><span>Contact Us</span></h2>
+              <p class="contact-text3 thq-body-large">
+               
+              </p>
+            </div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-content2">
+              <svg viewBox="0 0 1024 1024" class="thq-icon-medium">
+                <path
+                  d="M854 342v-86l-342 214-342-214v86l342 212zM854 170q34 0 59 26t25 60v512q0 34-25 60t-59 26h-684q-34 0-59-26t-25-60v-512q0-34 25-60t59-26h684z"
+                ></path>
+              </svg>
+              <div class="contact-contact-info1">
+                <div class="contact-content3">
+                  <h3 class="contact-text4 thq-heading-3">Email</h3>
+                  <p class="contact-text5 thq-body-large">
+                   
+                  </p>
+                </div>
+                <span class="contact-email thq-body-small">
+                  <span>info@medicinefinder.com</span>
+                </span>
+              </div>
+            </div>
+            <div class="contact-content4">
+              <svg viewBox="0 0 1024 1024" class="thq-icon-medium">
+                <path
+                  d="M282 460q96 186 282 282l94-94q20-20 44-10 72 24 152 24 18 0 30 12t12 30v150q0 18-12 30t-30 12q-300 0-513-213t-213-513q0-18 12-30t30-12h150q18 0 30 12t12 30q0 80 24 152 8 26-10 44z"
+                ></path>
+              </svg>
+              <div class="contact-contact-info2">
+                <div class="contact-content5">
+                  <h3 class="contact-text6 thq-heading-3">Phone</h3>
+                  <p class="contact-text7 thq-body-large">
+                    
+                  </p>
+                </div>
+                <span class="contact-phone thq-body-small">
+                  <span>+91 020-1234-5678</span>
+                </span>
+              </div>
+            </div>
+            <div class="contact-content6">
+              <svg viewBox="0 0 1024 1024" class="thq-icon-medium">
+                <path
+                  d="M512 0c-176.732 0-320 143.268-320 320 0 320 320 704 320 704s320-384 320-704c0-176.732-143.27-320-320-320zM512 512c-106.040 0-192-85.96-192-192s85.96-192 192-192 192 85.96 192 192-85.96 192-192 192z"
+                ></path>
+              </svg>
+              <div class="contact-contact-info3">
+                <div class="contact-content7">
+                  <h3 class="contact-text8 thq-heading-3">Office</h3>
+                  <p class="contact-text9 thq-body-large">
+                   
+                  </p>
+                </div>
+                <span class="contact-address thq-body-small">
+                  <span>Medicine Finder
+                    123 Health Avenue,
+                    Koregaon Park,
+                    Pune, Maharashtra 411001,
+                    India</span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </contact-wrapper>
+    
+    
+
+
+    
+<!-- JavaScript to get the user's location -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    document.getElementById('latitude').value = position.coords.latitude;
+                    document.getElementById('longitude').value = position.coords.longitude;
+                }, function(error) {
+                    alert("Error getting location: " + error.message);
+                });
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        });
+    </script>
+
+</body>
+</html>
