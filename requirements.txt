@@ -3,3 +3,4 @@ Flask-SQLAlchemy==3.0.5
 Flask-Migrate==4.0.4
 Werkzeug==2.3.6
 psycopg2==2.9.6
+gunicorn
